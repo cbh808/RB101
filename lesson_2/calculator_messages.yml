@@ -1,0 +1,19 @@
+
+en:
+  welcome: "Welcome to Another Calculator! Enter your name:"
+  add_name: "Please add a name."
+  hi: "Hi "
+  first_number: "Please input the first number:"
+  second_number: "Please input the second number:"
+  invalid_number: "That's not a valid number!"
+  another_calc: "Would you like to do another calculation? (Y to calculate again)"
+  thanks: "Thanks for using Another Calculator - See ya!"
+tx:
+  welcome: "Howdy and Welcome to Texan Cowculator!  What's your name partner:"
+  add_name: "That just ain't right, now add your name."
+  hi: "Howdy "
+  first_number: "YEE-HAW...Put in the first number partner:"
+  second_number: "Now go ahead and put in another one:"
+  invalid_number: "That number ain't no good partner!"
+  another_calc: "You wanna do that again? (Y for yee-haw, or somthin' else if not)"
+  thanks: "Aw Shucks...come on back now, ya hear!"

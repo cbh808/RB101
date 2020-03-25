@@ -1,79 +1,87 @@
 # require "pry"
+LANGUAGE = 'tx'
 
-def prompt(message)
+require 'yaml'
+MESSAGES = YAML.load_file('calculator_messages.yml')
+# puts MESSAGES.inspect
+
+def messages(message, lang='en')
+  MESSAGES[lang][message]
+end
+
+def prompt(key)
+  message = messages(key, LANGUAGE)
   Kernel.puts("=> #{message}")
 end
 
-def valid_number?(num)
-  if num == '0'
-    true
-  else
-    num.to_i != 0
-  end
+def valid_number?(num_str)
+  num_str.to_i.to_s == num_str || num_str.to_f.to_s == num_str
 end
 
 def operation_to_message(op)
-  case op
-  when '1'
-    'Adding'
-  when '2'
-    'Subtracting'
-  when '3'
-    'Multiplying'
-  when '4'
-    'Dividing'
-  end
+  a = case op
+        when '1'
+          'Adding'
+        when '2'
+          'Subtracting'
+        when '3'
+          'Multiplying'
+        when '4'
+          'Dividing'
+      end
+  a
 end
 
-prompt("Welcome to Another Calculator! Enter your name:")
+prompt('welcome')
 
 name = ''
 loop do
-  name = Kernel.gets().chomp()
+  name = Kernel.gets.chomp
 
-  if name.empty?()
-    prompt("Please add a name.")
+  if name.empty?
+    prompt('add_name')
   else
     break
   end
 end
 
-prompt("Hi #{name}!")
+puts "Hi #{name}!" if LANGUAGE == 'en'
+puts "Howdy #{name}!" if LANGUAGE == 'tx'
 
 loop do # main loop
   number1 = ''
   loop do
-    prompt("Please input the first number:")
-    number1 = Kernel.gets().chomp()
+    prompt('first_number')
+    number1 = Kernel.gets.chomp
 
     if valid_number?(number1)
       break
     else
-      prompt("That's not a valid number!")
+      prompt('invalid_number')
     end
   end
 
   number2 = ''
   loop do
-    prompt("Please input the second number:")
+    prompt('second_number')
     number2 = Kernel.gets.chomp
 
     if valid_number?(number2)
       break
     else
-      prompt("That's not a valid number!")
+      prompt('invalid_number')
     end
   end
 
   operator_prompt = <<-MSG
-  What operation is to be performed?
+  What do you want to do?
   1) add
   2) subtract
   3) multiply
   4) divide
   MSG
 
-  prompt(operator_prompt)
+  puts operator_prompt
 
   operator = ''
   loop do
@@ -82,36 +90,29 @@ loop do # main loop
     if %w(1 2 3 4).include?(operator)
       break
     else
-      prompt("Please enter 1 (+), 2 (-), 3 (*), 4 (/)")
+      puts("=> Please enter 1 (+), 2 (-), 3 (*), 4 (/)")
     end
   end
 
-  prompt("#{operation_to_message(operator)} the two numbers...")
+  puts ("=> #{operation_to_message(operator)} the two numbers...")
 
   result =  case operator
             when '1'
-              number1.to_i() + number2.to_i
+              number1.to_f + number2.to_f
             when '2'
-              number1.to_i() - number2.to_i
+              number1.to_f - number2.to_f
             when '3'
-              number1.to_i() * number2.to_i
+              number1.to_f * number2.to_f
             when '4'
-              number1.to_f() / number2.to_f
+              number1.to_f / number2.to_f
             end
 
-  prompt("The result is #{result}")
+  puts ("=> The result is #{result}")
+  puts ''
 
-  prompt("Would you like to do another calculation? (Y to calculate again)")
+  prompt('another_calc')
   answer = Kernel.gets.chomp
   break unless answer.downcase.start_with?('y')
 end
 
-prompt("Thanks for using Another Calculator - See ya!")
-
-# ask user for two numbers
-# ask for operation to perform
-# perform the operation on the two numbers
-# output the result
-
-# answer = Kernel.gets()
-# Kernel.puts(answer)
+prompt('thanks')

@@ -1,0 +1,4 @@
+loan_amount: "What is the amount of the loan?"
+loan_duration: "What is the loan duration in years?"
+loan_APR: "What is the annual interest (APR) in percent (e.g. input '5' for 5%)?"
+bye: "Bye and do the right thing!"
