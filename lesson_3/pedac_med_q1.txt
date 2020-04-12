@@ -1,0 +1,26 @@
+Written problem statement
+  write one-line program that creates output The Flintstones Rock!
+  10 times, with the subsequent line indented 1 space to the right
+
+Problem
+inputs
+  # string
+outputs 
+  # output string 10x with increasing +1 indent space each line
+
+
+Example / Test Case
+  # The Flintstones Rock!
+     The Flintstones Rock!
+      The Flintstones Rock!
+       ...
+
+Data Structure 
+  # string
+
+Algorithm
+  # define string and print
+  # loop copying string and adding 1 space before copied string
+  # break at 10x
+
+Code
