@@ -9,13 +9,10 @@ my_method(4, 5, 6)
   # Under 'Calling Methods'/Arguments/Default Positional Arguments:
     # "When the method defines default arguments you do not need to supply all the arguments to the method. 
     # Ruby will fill in the missing arguments in-order."
-  # Reading a further example in documentation, we expect above problem to print:
+  #  prints:
   # [4, 5, 3, 6]   
-# And it does
 
-# Other test cases
-
-
+# Other examples:
 puts 'my_method(0,0)'
 my_method(0, 0)
 # [0, 2, 3, 0]

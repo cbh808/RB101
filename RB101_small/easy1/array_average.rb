@@ -1,14 +1,7 @@
-# Written problem statement
-  # Write a method that takes one argument, an array 
-  # containing integers, and returns the average of 
-  # all numbers in the array. The array will never be 
-  # empty and the numbers will always be positive integers.
-
 # Problem
   # inputs
-    # method with 1 argument, array of integers
-    # array never empty & numbers positve
-
+    # array of integers as argument to method
+    # array to never be empty & all numbers positve
   # outputs 
     # return avg. of all numbers in array
 

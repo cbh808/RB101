@@ -1,6 +1,30 @@
-# Write a method that takes two arguments,
-# a string and a positive integer,
-# and prints the string as many times as the integer indicates.
+=begin
+# Problem
+  # inputs
+    # string as argument to method
+    # integer > 0 as 2nd arg to method
+  # outputs 
+    # string printed integer amount of times
+    # each on own line
+
+# Example 
+Hello
+Hello
+Hello
+# validation if integer input not valid:
+Please try again and use positive integer
+
+# Data Structure 
+  # string
+  # integer
+
+# Algorithm
+  # define method with 2 args
+  # if input not valid, print error message and break
+  # if valid input, loop integer times
+  # puts string each pass of loop
+=end
+# Code
 
 def repeat_yourself(string_to_repeat, integer)
   if integer <= 0 || integer % 1 != 0
@@ -17,38 +41,7 @@ repeat_yourself("Howdy world", 1.1)
 repeat_yourself("Howdy world", -1)
 repeat_yourself("Howdy world", 6)
 
-# Problem
-  # inputs
-    # string
-    # integer > 0
-  # outputs 
-    # string printed integer amount of times
-    # each on own line
-
-# Example 
-  # input
-    # repeat('Hello', 3)
-  # Output:
-    # Hello
-    # Hello
-    # Hello
-# input
-    # repeat('Hello', 0)
-  # Output:
-    # Please try again and use positive integer
-
-# Data Structure 
-  # string
-  # integer
-
-# Algorithm
-  # define method with inputs
-  # check if input is valid, if not message
-  # else loop integer times
-  # puts string each pass of loop
-
-# Code
   # alternative to for loop: 
-  #   interger.times do
+  #   integer.times do
   #     puts string_to_repeat
   #   end

@@ -5,20 +5,18 @@
 # the bonus should be half of the salary. If 
 # false, the bonus should be 0.
 
-
 # Problem
   # inputs
-    # positive integer (salary)
-    # boolean 
+    # positive integer (salary) as argument to method
+    # boolean as 2nd argument to method
   # outputs 
-    # integer (bonus)
+    # return integer (bonus)
 
 # Example / Test Case
 # puts calculate_bonus(2800, true) == 1400
 # puts calculate_bonus(1000, false) == 0
 # puts calculate_bonus(50000, true) == 25000
 # puts calculate_bonus(1_000_000, true) == 500000
-
 
 # Data Structure 
   # integer
@@ -38,23 +36,13 @@ def calculate_bonus(salary, boolean)
     0
   end
 end
+
+# note: can be shortened with ternary:
+# def calculate_bonus(salary, bonus)
+#   bonus ? (salary / 2) : 0 
+# end
+
 puts calculate_bonus(2800, true) == 1400
 puts calculate_bonus(1000, false) == 0
 puts calculate_bonus(50000, true) == 25000
 puts calculate_bonus(1_000_000, true) == 500000
-
-# discussion: using ruby syntax, can be shortened:
-# def calculate_bonus(salary, bonus)
-#   bonus ? (salary / 2) : 0
-# end
-
-
-def string_lengths(sentence)
-  strings = sentence.split
-  lengths = []
-
-  strings.each do |string|
-    lengths << string.size
-  end
-end
-string_lengths('eat at bobs')

@@ -1,18 +1,12 @@
-# # Written problem statement
-# Write a method that takes one argument, a 
-# positive integer, and returns the sum of 
-# its digits.
-# For a challenge, try writing this without 
-# any basic looping constructs (while, until, loop, and each).
-
-
+=begin
 # Problem
   # inputs
-    # positive integer
-    # 
+    # positive integer as argument to method
   # outputs 
     # sum of digits of positive integer
-    # 
+  # rules:
+    # writing code without any basic looping constructs 
+    # (while, until, loop, and each)
 
 # Example / Test Case
   # puts sum(23) == 5
@@ -21,16 +15,18 @@
   # puts sum(0) == 0
   # puts sum(101010) = 3
 
-
 # Data Structure 
-  # integer
-  #
-  # without basic looping constructs
+  # integer input
+  # string converted from input
+  # array of characters converted to array of integer values
 
 # Algorithm
-  # def method with integer argument
-  # turn argument into string and split integer and turn back to int
-  # reduce numbers to get sum
+  # define method with integer argument
+  # convert argument into string
+  # split integer into character array
+  # map! elments in place and convert to integers
+  # reduce array integers to get sum
+=end
 # Code
 def sum(pos_integer)
   array = pos_integer.to_s.split(//)
@@ -44,7 +40,5 @@ puts sum(123_456_789) == 45
 puts sum(0) == 0
 puts sum(101010) == 3
 
-# # comment: instead of 'split(//)' could have
-# used '.chars'
-  # Returns an array of characters in str. 
-  # This is a shorthand for str.each_char.to_a.
+# comment: could use '.chars' instead of 'split(//)' 
+# Returns an array of the characters from the string
