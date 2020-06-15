@@ -1,6 +1,5 @@
 =begin
 # Problem
-
 # inputs  
 
 # outputs  
