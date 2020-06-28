@@ -27,9 +27,9 @@ string concatenation with n - i spaces,  i stars
 =end 
 
 def triangle(n)
-  i = 1
+  i = 0
   n.times do 
-    puts ' '*(n - i) + '*' * i
+    puts ' '* i + '*' * (n - i)
     i += 1
   end
 end

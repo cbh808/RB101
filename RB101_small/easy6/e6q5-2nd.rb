@@ -24,12 +24,13 @@ insert variable at list[-1 - i]
 =end 
 def reverse(list)
   i = 0
+  j = -1
+
   new_list = list.clone
-    while i < list.length
-      element = new_list[0] 
-      new_list.shift
-      new_list.insert(-1-i, element)
+    while i < list.length/2
+      new_list[i], new_list[j] = new_list[j], new_list[i] 
       i += 1
+      j -= 1
     end
   new_list
 end
