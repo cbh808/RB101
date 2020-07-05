@@ -6,7 +6,7 @@ The hash will contain two keys, :title and :occupation, and the appropriate valu
 # outputs:
 return greeting that uses person's full name, and mentions the person's title and occupation
 # rules:
-
+reduce solution to 80 space line length
 # Example / Test Case:
 see code
 
@@ -20,7 +20,10 @@ extract info from args within string interpolation
 =end 
 
 def greetings(array, hash)
-  puts "Hello #{array.join(' ')}! Nice to have a #{hash[:title]} #{hash[:occupation]} around."
+  name = array.join(' ')
+  title = hash[:title] 
+  job = hash[:occupation]
+  puts "Hello #{name}! Nice to have a #{title} #{job} around."
 end
 
 greetings(['John', 'Q', 'Doe'], { title: 'Master', occupation: 'Plumber' })

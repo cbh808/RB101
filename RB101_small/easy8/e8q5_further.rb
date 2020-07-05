@@ -6,7 +6,7 @@ array of all possible palindromes of two letters or more
 # rules:
 substring can start anywhere within the string
 use the substrings method of the previous exercise.
-case matters
+ignore case and ignore non-alphanumeric chars
 # Example / Test Case:
 see code
 
@@ -25,8 +25,8 @@ def palindromes(initial_string)
   palindrome_array = []
   all_substrings = substrings(initial_string)
   all_substrings.each do |substring|
-    next if substring.size < 2
-    palindrome_array << substring if substring == substring.reverse
+    next if substring.size == 1
+    palindrome_array << substring if substring.downcase == substring.downcase.reverse
     end
   palindrome_array
 end
@@ -38,14 +38,16 @@ def substrings(string)
     array_final << substrings_at_start(string[i..-1])
     i += 1
   end
-  array_final.flatten
+  array_final.flatten.uniq
 end
 
 def substrings_at_start(string)
   array = []
   i = 0
   while i < string.size
-    array << string[0..i]
+    mini_string = string[0..i]
+    b = mini_string.delete('^a-z^0-9')
+    array << b if b.size > 1
     i += 1
   end
   array
@@ -53,11 +55,7 @@ end
 
 p palindromes('abcd') == []
 p palindromes('madam') == ['madam', 'ada']
-p palindromes('hello-madam-did-madam-goodbye') == [
-  'll', '-madam-', '-madam-did-madam-', 'madam', 'madam-did-madam', 'ada',
-  'adam-did-mada', 'dam-did-mad', 'am-did-ma', 'm-did-m', '-did-', 'did',
-  '-madam-', 'madam', 'ada', 'oo'
-]
-p palindromes('knitting cassettes') == [
-  'nittin', 'itti', 'tt', 'ss', 'settes', 'ette', 'tt'
-]
+p palindromes('hello-madam-did-madam-goodbye') == ["ll", "madam", "madamdidmadam", "ada", "adamdidmada", "damdidmad", "amdidma", "mdidm", "did", "oo"]
+p palindromes('knitting cassettes') == ["nittin", "itti", "tt", "ss", "settes", "ette"]
+p palindromes('-a--da%') == ['ada']
+p palindromes('-a--dad%a#') == ['ada', 'adada', 'dad']
