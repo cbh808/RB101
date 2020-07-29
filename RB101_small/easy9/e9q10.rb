@@ -23,8 +23,8 @@ def buy_fruit(nested)
     list << element[0]
     end
   end
-p list
+list
 end
 
-buy_fruit([["apples", 3], ["orange", 1], ["bananas", 2]]) #==
+p buy_fruit([["apples", 3], ["orange", 1], ["bananas", 2]]) ==
   ["apples", "apples", "apples", "orange", "bananas","bananas"]

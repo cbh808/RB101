@@ -2,7 +2,7 @@
 # inputs:
 two integers as arguments
 first argument is a count
-p second is the first number of a sequence that your method will create
+second is the first number of a sequence that your method will create
 # outputs:
 return an Array that contains the same number of elements as the count argument
 the values of each element will be multiples of the starting number
@@ -15,12 +15,12 @@ see code
 
 # Data Structures:
 input two ints as args
-p output array sequence of ints
+output array sequence of ints
 
 # Algorithm:
 create empty array
 loop count times starting at 1
-append starting number times loop count to array
+append (starting number * loop count) to array
 =end 
 
 def sequence(count, start_number)
