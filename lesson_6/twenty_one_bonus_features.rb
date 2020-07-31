@@ -58,7 +58,7 @@ def total(cards)
             else
               value.to_i
             end
-          end
+  end
 
   # correct for Aces
   values.select { |value| value == "A" }.count.times do
