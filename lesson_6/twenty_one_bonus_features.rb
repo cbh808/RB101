@@ -1,13 +1,21 @@
 SUITES = ['C', 'D', 'H', 'S']
 VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
 
-ROUNDS = 5
+ROUNDS = 3
 
 GAME_NAME = 21
 DEALER_STAY = 17
 
 def prompt(str)
   puts "=> #{str}"
+end
+
+def start_display
+  system 'clear'
+  prompt("Let's play #{GAME_NAME}!")
+  prompt("The first one to win #{ROUNDS} rounds wins the game.")
+  prompt("C = Clubs, D = Diamonds, H = Hearts, S = Spades")
+  puts ""
 end
 
 def initialize_deck
@@ -22,7 +30,7 @@ def deal_first2cards(deck, player_hand, dealer_hand)
 end
 
 def display_hands(player_hand, dealer_hand, player_total)
-  prompt "Dealer Cards: one card down, the other is #{dealer_hand[1]}"
+  prompt "Dealer Cards: ? and #{dealer_hand[1]}"
   prompt "Player Cards: #{player_hand}, Player has #{player_total}"
   puts ""
 end
@@ -37,23 +45,24 @@ def show_card_drawn(hand, player_or_dealer)
 end
 
 def total(cards)
-  # cards = ['H1','H2','H3' ... ]
-  values = cards.map { |card| card[1] } # assigns ary of card values as strings
+  # cards = [['H','A'], ... ]
+  # initiates values = ary of card values (as strings)
+  values = cards.map { |card| card[1] }
 
   sum = 0
   values.each do |value|
-    if value == "A"
-      sum += 11
-    elsif value.to_i == 0 # J, Q, K
-      sum += 10
-    else
-      sum += value.to_i
-    end
-  end
+    sum +=  if value == "A"
+              11
+            elsif value.to_i == 0 # J, Q, K
+              10
+            else
+              value.to_i
+            end
+          end
 
   # correct for Aces
   values.select { |value| value == "A" }.count.times do
-    sum -= 10 if sum > 21
+    sum -= 10 if sum > GAME_NAME
   end
 
   sum
@@ -68,7 +77,6 @@ def player_plays(deck, player_hand)
       prompt("Player takes card!")
       deal_card(deck, player_hand)
       show_card_drawn(player_hand, "Player")
-
     elsif answer.start_with?('s')
       break
     else prompt "Invalid input!"
@@ -76,7 +84,6 @@ def player_plays(deck, player_hand)
 
     break if total(player_hand) > GAME_NAME
   end
-  player_hand
 end
 
 def display_player_result(player_total)
@@ -98,7 +105,9 @@ def dealer_plays(deck, dealer_hand, dealer_total)
     if total(dealer_hand) >= DEALER_STAY
       break
     else
+      sleep 1
       prompt("Dealer takes card!")
+      sleep 1
       deal_card(deck, dealer_hand)
       show_card_drawn(dealer_hand, "Dealer")
     end
@@ -106,6 +115,7 @@ def dealer_plays(deck, dealer_hand, dealer_total)
 end
 
 def display_dealer_result(dealer_total)
+  sleep 1.5
   if dealer_total > GAME_NAME
     prompt "Dealer Busted - Player Wins!"
   else
@@ -114,7 +124,8 @@ def display_dealer_result(dealer_total)
   puts "--------------------------------"
 end
 
-def display_final_result(player_total, dealer_total)
+def display_winner(player_total, dealer_total)
+  sleep 1.5
   if player_total > dealer_total
     prompt "Player Wins!"
   elsif dealer_total > player_total
@@ -135,6 +146,16 @@ def declare_overall_winner(player_wins)
   puts "----------------------------------------------------------"
 end
 
+def display_score(player_wins, dealer_wins, pushes)
+  puts "---------------------------------------------"
+  prompt "Player: #{player_wins} wins"
+  prompt "Dealer: #{dealer_wins} wins"
+  prompt "Pushes: #{pushes}"
+  puts "---------------------------------------------"
+  prompt "Hit 'ENTER' to start next round"
+  gets.chomp
+end
+
 def play_again?
   loop do
     prompt("Would you like to play again?  Please choose (y)es or (n)o.")
@@ -151,22 +172,23 @@ def play_again?
 end
 
 loop do
-  puts "--------------------------------------------------"
-  prompt("Let's play #{GAME_NAME}!")
-  prompt("The first one to win #{ROUNDS} rounds wins the game.")
-  prompt("C = Clubs, D = Diamonds, H = Hearts, S = Spades")
-  puts ""
   player_wins = 0
   dealer_wins = 0
   pushes = 0
+
+  player_total = 0
+  dealer_total = 0
+
   i = 1
+
+  start_display
+
   loop do
+    sleep 1
     prompt "ROUND #{i}"
     puts "========================="
     player_hand = []
     dealer_hand = []
-    player_total = total(player_hand)
-    dealer_total = total(dealer_hand)
     deck = initialize_deck
     loop do
       deal_first2cards(deck, player_hand, dealer_hand)
@@ -181,12 +203,11 @@ loop do
       dealer_total = total(dealer_hand)
       display_dealer_result(dealer_total)
       break if busted?(dealer_total)
-      display_final_result(player_total, dealer_total)
+      display_winner(player_total, dealer_total)
       break
     end
-    
-    player_total = total(player_hand)
-    dealer_total = total(dealer_hand)
+
+    # increment wins and pushes
     if player_total > GAME_NAME
       dealer_wins += 1
     elsif dealer_total > GAME_NAME
@@ -199,19 +220,17 @@ loop do
       dealer_wins += 1
     end
 
-    if player_wins == 5 || dealer_wins == 5
+    # display intermediate score or overall winner
+    if player_wins == ROUNDS || dealer_wins == ROUNDS
       declare_overall_winner(player_wins)
       break
     else
-      puts "---------------------------------------------"
-      prompt "Player: #{player_wins} wins"
-      prompt "Dealer: #{dealer_wins} wins"
-      prompt "Pushes: #{pushes}"
-      puts "---------------------------------------------"
+      sleep 2
+      display_score(player_wins, dealer_wins, pushes)
     end
     i += 1
   end
-  break if play_again? == false # same as `break unless play_again?`
+  break unless play_again?
 end
 
 prompt("Thanks for playing #{GAME_NAME}!")
