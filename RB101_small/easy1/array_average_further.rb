@@ -1,7 +1,7 @@
 =begin
 # Problem
-  # use a float for answer instead of integer
-  # divide by count of elements (return a float)
+  # use a float for one of the numbers instead of integer
+  # divide by count of elements converted to float (returns a float)
 =end
 # Code
 def average(number_array)

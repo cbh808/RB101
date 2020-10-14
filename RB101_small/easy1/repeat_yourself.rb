@@ -3,18 +3,18 @@
   # inputs
     # string as argument to method
     # integer > 0 as 2nd arg to method
-  # outputs 
+  # outputs
     # string printed integer amount of times
     # each on own line
 
-# Example 
+# Example
 Hello
 Hello
 Hello
 # validation if integer input not valid:
 Please try again and use positive integer
 
-# Data Structure 
+# Data Structure
   # string
   # integer
 
@@ -41,7 +41,9 @@ repeat_yourself("Howdy world", 1.1)
 repeat_yourself("Howdy world", -1)
 repeat_yourself("Howdy world", 6)
 
-  # alternative to for loop: 
-  #   integer.times do
-  #     puts string_to_repeat
+  # alternative:
+  #   def repeat_yourself(string_to_repeat, integer)
+  #     integer.times do
+  #      puts string_to_repeat
+  #     end
   #   end

@@ -1,17 +1,22 @@
 =begin
 # Written problem statement
-# Write a method that takes one integer argument, 
-# which may be positive, negative, or zero. This 
-# method returns true if the number's absolute value 
-# is odd. You may assume that the argument is a valid 
+# Write a method that takes one integer argument,
+# which may be positive, negative, or zero. This
+# method returns true if the number's absolute value
+# is odd. You may assume that the argument is a valid
 # integer value.
 
 # Problem
   # inputs
-    # one integer as argument to method 
-    # assume valid argument given
-  # outputs 
-    # return true if integer's absolute value is odd
+  one integer as argument to method
+
+  # outputs
+  return true if integer's absolute value is odd
+  return false othewise
+
+  # rules
+  assume valid argument given
+  no using #odd? or #even? in solution
 
 # Example / Test Case
   puts is_odd(2)     # => false
@@ -21,13 +26,14 @@
   puts is_odd?(0)    # => false
   puts is_odd?(7)    # => true
 
-# Data Structure 
-  # integer
+# Data Structure
+  # integer argument to method
+  # boolean as return value of method
 
 # Algorithm
   # define method that determines abs value of integer
-  # determine if abs value is odd and return result 
-  # without using #odd? or #even? in solution
+  # determine if abs value is odd and return result
+  
 =end
 
 # Code
@@ -46,11 +52,11 @@ puts is_odd?(7)    # => true
 def is_odd?(number)
   number % 2 == 1
 end
-  # not necessary to change negative int to abs. number 
-  # modulus of negative number evaluates 'oddness' directly
-  # LS solution does not work for remainder calculatin
-  # integer.abs above in my first solution works if one is  
-  # not sure if % acts either as 'modulo' or 'remainder' 
+
+  # not necessary to change negative int to abs. number
+  # modulus of negative number % 2 evaluates 'oddness' directly
+  # LS solution does not work for remainder calculation
+  # integer.abs above works if not sure if `%` acts either as 'modulo' or 'remainder'
 
 # to use .remainder directly:
 def is_odd?(integer)

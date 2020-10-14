@@ -5,7 +5,7 @@
     string only letters and spaces
     spaces only when > 1 word in string
   # outputs 
-    return given string with words of >= 5 char reversed
+    return given string with words of >= 5 chars with chars reversed
 
 # Example / Test Case
 puts reverse_words('Professional')          # => lanoisseforP
@@ -38,3 +38,22 @@ end
 puts reverse_words('Professional')          # => lanoisseforP
 puts reverse_words('Walk around the block') # => Walk dnuora the kcolb
 puts reverse_words('Launch School')         # => hcnuaL loohcS
+
+
+# alt:
+def reverse_words2(string)
+
+  arr = string.split.map do |word|
+    if word.size >= 5
+      word.reverse
+    else
+      word
+    end
+  end
+
+arr.join(' ')
+end
+
+puts reverse_words2('Professional')          # => lanoisseforP
+puts reverse_words2('Walk around the block') # => Walk dnuora the kcolb
+puts reverse_words2('Launch School')         # => hcnuaL loohcS

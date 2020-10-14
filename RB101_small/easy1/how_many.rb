@@ -32,7 +32,7 @@ def count_occurences(array)
   vehicle_hash = Hash.new   #alt: vehicle_hash = {}
 
 # make each element lowercase
-  array.map! do |element|  #map! mutates array
+  array.map! do |element|  #map! mutates array  
     element.downcase
   end
 

@@ -2,14 +2,14 @@
   # inputs
     # array of integers as argument to method
     # array to never be empty & all numbers positve
-  # outputs 
+  # outputs
     # return avg. of all numbers in array
 
 # Example / Test Case
   # puts average([1, 5, 87, 45, 8, 8]) == 25
   # puts average([9, 47, 23, 95, 16, 52]) == 40
 
-# Data Structure 
+# Data Structure
   # array of integers
   # output: integer
 

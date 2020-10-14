@@ -29,12 +29,12 @@ def hexadecimal_to_integer(num_chars)
   num_chars.hex
 end
 
-hexadecimal_to_integer('4D9f') == 19871
-hexadecimal_to_integer('570') == 1392
-hexadecimal_to_integer('0') == 0
+p hexadecimal_to_integer('4D9f') == 19871
+p hexadecimal_to_integer('570') == 1392
+p hexadecimal_to_integer('0') == 0
 puts
 
-# Code gritty way / add to base 10 the hex chars +
+# Code adapt base 10 solution, the hex chars added to hash
 # base 16 calc in conversion from array to number
 def string_to_integer(num_chars)
   hash = {"0" => 0, "1" => 1, "2" => 2, "3" => 3, "4" => 4, 
@@ -43,7 +43,7 @@ def string_to_integer(num_chars)
           "e" => 14, "f" => 15 }
   
   num_chars_array = num_chars.chars
-  integer_array = num_chars_array.map { |char| hash[char] }
+  integer_array = num_chars_array.map { |char| hash[char.downcase] }
   # p integer_array => [4, 3, 2, 1]
   
   integer = 0
@@ -53,5 +53,6 @@ def string_to_integer(num_chars)
   integer
 end
 
-hexadecimal_to_integer('4D9f') == 19871
-hexadecimal_to_integer('570') == 1392
+p string_to_integer('4D9f') == 19871
+p string_to_integer('570') == 1392
+p string_to_integer('0') == 0
