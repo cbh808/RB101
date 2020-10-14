@@ -18,8 +18,8 @@ def display_welcome
   puts ""
 end
 
-def display_current_round(i)
-  prompt "ROUND #{i}"
+def display_current_round(round_number)
+  prompt "ROUND #{round_number}"
   puts "========================="
 end
 
@@ -60,8 +60,8 @@ def correct_for_aces(values, sum)
 end
 
 def total(cards)
-  # cards = [['H','A'], ... ]
-  # initiates values = ary of card values (as strings)
+  # cards = [['H','A'], ['D','J']... ]
+  # transform cards to an ary of card values (as strings)
   values = cards.map { |card| card[1] }
 
   sum = 0
@@ -219,13 +219,13 @@ loop do
   player_total = 0
   dealer_total = 0
 
-  i = 1
+  round = 1
 
   display_welcome
 
   loop do
     sleep 1
-    display_current_round(i)
+    display_current_round(round)
     player_hand = []
     dealer_hand = []
     deck = initialize_deck
@@ -256,7 +256,7 @@ loop do
       display_score(player_wins[0], dealer_wins[0], pushes[0])
       system 'clear'
     end
-    i += 1
+    round += 1
   end
   break unless play_again?
 end

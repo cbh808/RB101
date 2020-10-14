@@ -1,6 +1,8 @@
 =begin
-# inputs:
+# Problem statment (restate explicit reqs /identify implicit reqs)
 
+Explicit
+# inputs:
 # outputs:
 
 # rules:
@@ -14,6 +16,4 @@ output
 
 # Algorithm:
 
-=end 
-
-
+=end

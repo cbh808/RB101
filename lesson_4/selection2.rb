@@ -6,15 +6,16 @@ def double_numbers(numbers)
   loop do
     break if counter == numbers.size
 
-    current_number = numbers[counter] # alt: numbers[counter] *= 2
-    numbers << current_number * 2     
-    numbers.shift
-    
+    numbers[counter] *= 2
+
     counter += 1
   end
 
   numbers
 end
 
-my_numbers = [1, 4, 3, 7, 2, 6]
+p my_numbers = [1, 4, 3, 7, 2, 6]
+p my_numbers.object_id
 p double_numbers(my_numbers)
+p my_numbers
+p my_numbers.object_id

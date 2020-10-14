@@ -1,3 +1,5 @@
+# select the key-value pairs where the value is 'Fruit'.
+
 produce = {
   'apple' => 'Fruit',
   'carrot' => 'Produce',
@@ -12,7 +14,7 @@ produce = {
 
 def select_fruit(products)
   fruity_array = []
-  temp_array = products.to_a  
+  temp_array = products.to_a
   i = 0
 
   loop do
@@ -38,14 +40,14 @@ def select_fruit1(products)
   fruity_hash = {}
   product_keys = products.keys
   counter = 0
-  
-  loop do 
+
+  loop do
     break if counter == product_keys.size
 
     temp_key = product_keys[counter]
     temp_value = products[temp_key]
 
-    if temp_value == 'Fruit' 
+    if temp_value == 'Fruit'
       fruity_hash[temp_key] = temp_value
     end 
 
@@ -53,5 +55,5 @@ def select_fruit1(products)
   end
   fruity_hash
 end
-select_fruit1(produce)
 
+select_fruit1(produce)
