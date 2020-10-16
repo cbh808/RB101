@@ -23,7 +23,7 @@ B:O   X:K   D:Q   C:P   N:A
 G:T   R:E   F:S   J:W   H:U
 V:I   L:Y   Z:M
 
-# Algorithm General:
+# Algorithm I General:
 Store spelling blocks in a data structure
 Iterate over characters of word
     find block that contains character
@@ -32,7 +32,7 @@ return true if all blocks have been used < 2 times
 else return false
 
 # Algorithm I :
-Store spelling blocks in a hash  `blocks` .
+Store spelling blocks in a hash `blocks` .
   create array with blocks as strings  'B:O',etc.
   create empty hash  `blocks`
   iterate over array of string blocks
@@ -81,3 +81,14 @@ end
 p block_word?('BATCH') == true
 p block_word?('BUTCH') == false
 p block_word?('jest') == true
+
+=begin
+# Algorithm II General (LS):
+Store spelling blocks in a data structure (array)
+
+Iterate over characters of each block
+Count the number of times the letters in each block occur in string
+
+return true if all blocks have been used < 2 times
+else retun false
+=end
