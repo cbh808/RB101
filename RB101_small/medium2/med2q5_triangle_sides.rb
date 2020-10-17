@@ -30,7 +30,7 @@ check validity
 if valid:
   check if equilateral
     all sides same
-  chek if isosceles
+  check if isosceles
     2 sides same
   else
     declare scalene
