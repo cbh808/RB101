@@ -19,8 +19,10 @@ output integer
 define method sum_square_difference with one arg (int)
 calculate all integers from 1 to n and carry out the calculations
  (1 + ... + n)**2  - (1**2 + ... + n**2)
-e.g. use range (1..n).inject(:+) - (1..n).inject(0) {|sum, x| sum += x**2}
-
+e.g. use range & inject
+(1..n).inject(:+) - (1..n).inject(0) {|sum, x| sum += x**2}
+e.g. range and sum and map
+(1..n).sum**2 - (1..n).map {|x| x**2}.sum
 =end 
 def sum_square_difference(n)
   (1..n).inject(:+)**2 - (1..n).inject(0) {|sum, x| sum += x**2}
