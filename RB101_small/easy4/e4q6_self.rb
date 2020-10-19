@@ -21,7 +21,7 @@ puts
 def longest(array)
   array.inject do |memory, word|
     memory.length > word.length ? memory : word  # => fluffyunicorn
-  end       
+  end
 end
 
 beasts =  %w(barkydog badbear stripyzebra reddragon fluffyunicorn)

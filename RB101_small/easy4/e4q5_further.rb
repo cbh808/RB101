@@ -5,7 +5,7 @@
   A: concise way to sum the elements of an array
   Q: Which is clearer solution, summing or using .inject? 
   A: clearer is to sum factors because inject requires
-  specific knowledge of Array#inject method
+  initial change of data structure type in order to use inject
 
   Q: Which is more succinct?
   A: don't see advantage in succinctness to either way.
@@ -15,26 +15,24 @@
 
 # Algorithm
   create array = []
-  loop through all integers from 2..number
+  loop through all integers from 1..number
     if factor, add multiple to array
   sum elements of array with Enumerable.inject
-  check tests
 =end
 # Code
 
 def multisum(integer)
-  factors = []                  
-  for i in 2..integer
-    if i % 3 == 0 || i % 5 == 0
-      factors << i              
-    end
+  array = []
+  (1..integer).each do |num|
+    array << num if num % 3 == 0 || num % 5 == 0
   end
-  factors.inject(0, :+)                   
+
+  array.inject(0){|sum, n| sum + n}
 end
 
-multisum(20) == 98
-multisum(2) == 0
-multisum(3) == 3
-multisum(5) == 8
-multisum(10) == 33
-multisum(1000) == 234168
+p multisum(20) == 98
+p multisum(2) == 0
+p multisum(3) == 3
+p multisum(5) == 8
+p multisum(10) == 33
+p multisum(1000) == 234168
