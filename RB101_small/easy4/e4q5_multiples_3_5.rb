@@ -10,16 +10,42 @@ sum the multiples
     be 98 (3 + 5 + 6 + 9 + 10 + 12 + 15 + 18 + 20)
 
 # Example / Test Case
-pmultisum(20) == 98
-pmultisum(2) == 0
-pmultisum(3) == 3
-pmultisum(5) == 8
+multisum(20) == 98
+multisum(2) == 0
+multisum(3) == 3
+multisum(5) == 8
 mulitsum(10) == 33
-pmultisum(1000) == 234168
+multisum(1000) == 234168
 
 # Data Structure 
   input integer
   output integer
+
+# Algorithm
+define method with 1 arg (integer)
+iniitialize local variable 'sum' = 0
+iterate over the range 1..integer
+ sum += num if num % 3 == 0 || num % 5 == 0
+return sum
+
+use reduce
+
+def multisum(integer)
+  sum = 0
+  (1..integer).each do |num|
+    sum += num if num % 3 == 0 || num % 5 == 0
+  end
+  sum
+end
+
+def multisum(integer)
+  (1..integer).reduce(0) {|sum, num| sum += num if num % 3 == 0 || num % 5 == 0}
+end
+
+
+
+
+
 
 #Algorithm:
 define a method that takes one arg, an integer
@@ -31,14 +57,12 @@ sum the array and use as return value
 =end
 
 # Code
-def multisum(integer=2)
-  factors = []                  #alt: sum = 0
-  for i in 2..integer
-    if i % 3 == 0 || i % 5 == 0
-      factors << i              #alt: sum += i
-    end
+def multisum(integer)
+  sum = 0
+  (1..integer).each do |num|
+    sum += num if num % 3 == 0 || num % 5 == 0
   end
-  factors.sum                   #alt: sum
+  sum
 end
 
 p multisum(20) == 98
@@ -47,4 +71,4 @@ p multisum(3) == 3
 p multisum(5) == 8
 p multisum(10) == 33
 p multisum(1000) == 234168
-p multisum() == 0
+p multisum(0) == 0
