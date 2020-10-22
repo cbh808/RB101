@@ -1,12 +1,12 @@
 =begin
 # Problem
-write method that returns ASCII string value of string
+write method that returns 'ASCII string value' of string
+i.e. sum of the ASCII-values of all the chars in a string 
 # inputs  
 string
 # outputs  
-return integer ASCII string value
+return integer => ASCII string value
 # rules
-string value is sum of ASCII values of all characteers in a string   
 
 # Example / Test Case
 ascii_value('Four score') == 984
@@ -15,43 +15,38 @@ ascii_value('a') == 97
 ascii_value('') == 0
 
 # Data Structure 
-strings inputs (passed to method)
-integer 
+input: string 
+output: integer 
 
-# Algorithm
-define method that takes one argument
-break string into array of chars
-iterate over array and map ascii value of each char
-sum elements of array and return  
-
-=end 
-
-def ascii_value(str)
-  ascii_arr = str.chars.map do |char|
-    char.ord
-  end
-
-  if ascii_arr != []
-    ascii_arr.inject(:+) 
-  else
-    0
-  end
-
-end
-
-ascii_value('Four score') == 984
-ascii_value('Launch School') == 1251
-ascii_value('a') == 97
-ascii_value('') == 0
-
-# alternative:
-def ascii_value1(str)
+# Algorithm I
+define method w one arg
+Iterate over each letter of the string
+caluculate the ASCII value and add to running total
+return sum 
+=end
+def ascii_value(string)
   sum = 0
-  str.each_char do |char|
-    sum += char.ord
-  end
+  string.each_char {|char| sum += char.ord}
   sum
 end
+  
 
-ascii_value1('Four score') == 984
-ascii_value1('') == 0
+# Algorithm II
+# define method w one arg
+# Convert string into array of chars
+# transform the array values into ascii integers
+# sum the transformed array
+
+def ascii_value2(string)
+  string.chars.map {|char| char.ord }.sum
+end
+
+p ascii_value('Four score') == 984
+p ascii_value('Launch School') == 1251
+p ascii_value('a') == 97
+p ascii_value('') == 0
+puts
+p ascii_value2('Four score') == 984
+p ascii_value2('Launch School') == 1251
+p ascii_value2('a') == 97
+p ascii_value2('') == 0
