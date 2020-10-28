@@ -1,37 +1,33 @@
 =begin
 # Problem
-# inputs  
+# inputs
 array as argument
-# outputs  
+# outputs
 new array with elements reversed
 # rules
 no using Array#reverse or Array#reverse!
+original list may not be modified
 
 # Example / Test Case
 see tests below
 
-# Data Structure 
-arrays everywhere you look
+# Data Structure
+input: array
+output: new array
 
-# Algorithm
-define method with arg 'list' as array 
-copy array into new array list
-loop over the new array
-shift list[0] and assign to variable
-insert variable at list[-1 - i] 
+# Algorithm refactor
+define method w/ one arg (arr)
+initialize local var, assign empty array
+iterate over arr
+  put copy of value at front of new array
+end
+return new array
+=end
 
-2nd approach: find solution with ruby 2 variable definition idiom
-=end 
-def reverse(list)
-  i = 0
-  new_list = list.clone
-    while i < list.length
-      element = new_list[0] 
-      new_list.shift
-      new_list.insert(-1-i, element)
-      i += 1
-    end
-  new_list
+def reverse(arr)
+  new_arr = []
+  arr.each {|n| new_arr.unshift(n)}
+  new_arr
 end
 
 p reverse([1,2,3,4]) == [4,3,2,1]          # => true
@@ -43,4 +39,4 @@ list = [1, 3, 2]                      # => [1, 3, 2]
 new_list = reverse(list)              # => [2, 3, 1]
 p list.object_id != new_list.object_id  # => true
 p list == [1, 3, 2]                     # => true
-p new_list == [2, 3, 1]   
+p new_list == [2, 3, 1]

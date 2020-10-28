@@ -1,9 +1,7 @@
-
-
 # 3rd approach: find solution using inject
- 
+
 def reverse(list)
-  list.inject([]) { |array, element| array.unshift(element) }
+  list.inject([]) { |arr, el| arr.unshift(el) }
 end
 
 p reverse([1,2,3,4]) == [4,3,2,1]          # => true
@@ -15,4 +13,4 @@ list = [1, 3, 2]                      # => [1, 3, 2]
 new_list = reverse(list)              # => [2, 3, 1]
 p list.object_id != new_list.object_id  # => true
 p list == [1, 3, 2]                     # => true
-p new_list == [2, 3, 1]   
+p new_list == [2, 3, 1]

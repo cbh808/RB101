@@ -3,7 +3,7 @@
 # 3rd approach: find solution using each_with_object
  
 def reverse(list)
-  list.each_with_object([]) { |element, array| array.unshift(element) }
+  list.each_with_object([]) { |el, arr| arr.unshift(el) }
 end
 
 p reverse([1,2,3,4]) == [4,3,2,1]          # => true

@@ -9,12 +9,14 @@ all values except duplicate occur exactly once
 # Example / Test Case
 see code
 # Data Structure 
-array input
-integer output
+input array
+output integer
+
 # Algorithm
-1. sort array iterate over and return number if two elements are equal
-2. 
-=end 
+1. sort array iterate over and return number if
+two elements are equal
+2.
+=end
 def find_dup(array)
   array.sort!.each_index do |idx|
     return array[idx] if array[idx + 1] == array[idx]

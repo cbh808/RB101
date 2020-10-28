@@ -11,16 +11,20 @@ no using Array#reverse or Array#reverse!
 see tests below
 
 # Data Structure 
-arrays everywhere you look
+input array
+output array
 
+2nd approach: 
+find solution with parallel variable assignment idiom
 # Algorithm
 define method with arg 'list' as array 
-copy array into new array list
+copy array into new array 
 loop over the new array
-shift list[0] and assign to variable
-insert variable at list[-1 - i] 
+use parallel assignment to exchange two values w/o
+ requiring an intermediate variable
+  e.g. el[0], el[-1] = el[-1], el[0]
+  stop reassignment at mid point of array
 
-2nd approach: find solution with ruby 2 variable definition idiom
 =end 
 def reverse(list)
   i = 0
@@ -44,4 +48,4 @@ list = [1, 3, 2]                      # => [1, 3, 2]
 new_list = reverse(list)              # => [2, 3, 1]
 p list.object_id != new_list.object_id  # => true
 p list == [1, 3, 2]                     # => true
-p new_list == [2, 3, 1]   
+p new_list == [2, 3, 1]
