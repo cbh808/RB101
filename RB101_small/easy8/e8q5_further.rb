@@ -14,48 +14,38 @@ see code
 input string
 output array of string elements
 
-# Algorithm:
-use substrings method from previous exercise to return all possible substrings
-iterate over string elements
-append element to new array if string is equal to reverse of string
-return new array
+# Algorithm ref ignoring case and non-alphabetic chars
+str arg to be cleaned, e.g. non-alpha removed, and downcased
+init loc var new_str and assign empty str
+iteate over each char and pass to new_str if meets conditions
+e.g. str.each_char {|ch| new_str += ch.downcase if char non-alpha}
 =end 
 
-def palindromes(initial_string)
-  palindrome_array = []
-  all_substrings = substrings(initial_string)
-  all_substrings.each do |substring|
-    next if substring.size == 1
-    palindrome_array << substring if substring.downcase == substring.downcase.reverse
-    end
-  palindrome_array
+def substrings(str)
+  all_substrings = []
+  0.upto(str.size - 1) do |idx|
+    all_substrings += leading_substrings(str[idx..-1])
+  end
+  all_substrings
 end
 
-def substrings(string)
-  array_final = []
-  i = 0
-  while i < string.size
-    array_final << substrings_at_start(string[i..-1])
-    i += 1
+def leading_substrings(str)
+  substrings = []
+  (0..str.size-1).each do |idx|
+    substrings << str[0..idx]
   end
-  array_final.flatten.uniq
+  substrings
 end
 
-def substrings_at_start(string)
-  array = []
-  i = 0
-  while i < string.size
-    mini_string = string[0..i]
-    b = mini_string.delete('^a-z^0-9')
-    array << b if b.size > 1
-    i += 1
-  end
-  array
+def palindromes(str)
+  clean_str = ''
+  str.each_char {|char| clean_str += char.downcase if char =~ /[a-z]/i}
+  substrings(clean_str).select {|sub| sub.size > 1 && sub == sub.reverse}
 end
 
 p palindromes('abcd') == []
-p palindromes('madam') == ['madam', 'ada']
-p palindromes('hello-madam-did-madam-goodbye') == ["ll", "madam", "madamdidmadam", "ada", "adamdidmada", "damdidmad", "amdidma", "mdidm", "did", "oo"]
-p palindromes('knitting cassettes') == ["nittin", "itti", "tt", "ss", "settes", "ette"]
+p palindromes('Madam') == ['madam', 'ada']
+p palindromes('hello-madam-did-madam-goodbye') == ["ll", "madam", "madamdidmadam", "ada", "adamdidmada", "damdidmad", "amdidma", "mdidm", "did", "madam", "ada", "oo"]
+p palindromes('knitting cassettes') == ["nittin", "itti", "tt", "ss", "settes", "ette", "tt"]
 p palindromes('-a--da%') == ['ada']
-p palindromes('-a--dad%a#') == ['ada', 'adada', 'dad']
+p palindromes('-a--dad%a#') == ['ada', 'adada', 'dad', 'ada']

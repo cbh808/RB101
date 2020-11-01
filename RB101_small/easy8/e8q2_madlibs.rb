@@ -19,13 +19,11 @@ input: user generated strings
 output: programme generated string
 
 # Algorithm:
-gets.chomp various forms of words, noun, verb, adverb, adverb
-generate a sentence from the input:
-  use a static form with string concatenation
-  use a dynamic form that chooses randomly order of verb/adverb, noun/adjective
-=end 
-
-
+define method that takes 1 arg, string of word type
+init loc vars for each word type and assign to result of method to obtain input from user
+  gets.chomp various forms of words, noun, verb, adverb, adverb
+generate a sentence from the input with string interpolation (i.e. using values of local vars)
+=end
 
 def get_word(word_type)
   puts "Enter a #{word_type}:"
@@ -37,4 +35,4 @@ verb = get_word('verb')
 adjective = get_word('adjective')
 adverb = get_word('adverb')
 
-puts "In the begginning, #{noun}s, especially #{adjective} #{noun}s, were kindly requested to #{verb} #{adverb}."
+puts "In the beginning, #{noun}s, especially #{adjective} #{noun}s, were kindly requested to #{verb} #{adverb}."

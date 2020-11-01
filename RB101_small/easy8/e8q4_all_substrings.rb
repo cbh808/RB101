@@ -23,10 +23,10 @@ def substrings(string)
   array_final = []
   i = 0
   while i < string.size
-    array_final << substrings_at_start(string[i..-1])
+    array_final += substrings_at_start(string[i..-1])
     i += 1
   end
-  array_final.flatten
+  array_final
 end
 
 def substrings_at_start(string)

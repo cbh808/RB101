@@ -16,39 +16,27 @@ output array of string elements
 
 # Algorithm:
 use substrings method from previous exercise to return all possible substrings
-iterate over string elements
-append element to new array if string is equal to reverse of string
-return new array
+select elements from all substrings that are > 1 in len and palindromes
 =end 
 
-def palindromes(initial_string)
-  palindrome_array = []
-  all_substrings = substrings(initial_string)
-  all_substrings.each do |substring|
-    next if substring.size < 2
-    palindrome_array << substring if substring == substring.reverse
-    end
-  palindrome_array
+def substrings(str)
+  all_substrings = []
+  0.upto(str.size - 1) do |idx|
+    all_substrings += leading_substrings(str[idx..-1])
+  end
+  all_substrings
 end
 
-def substrings(string)
-  array_final = []
-  i = 0
-  while i < string.size
-    array_final << substrings_at_start(string[i..-1])
-    i += 1
+def leading_substrings(str)
+  substrings = []
+  (0..str.size-1).each do |idx|
+    substrings << str[0..idx]
   end
-  array_final.flatten
+  substrings
 end
 
-def substrings_at_start(string)
-  array = []
-  i = 0
-  while i < string.size
-    array << string[0..i]
-    i += 1
-  end
-  array
+def palindromes(str)
+  substrings(str).select {|sub| sub.size > 1 && sub == sub.reverse}
 end
 
 p palindromes('abcd') == []
