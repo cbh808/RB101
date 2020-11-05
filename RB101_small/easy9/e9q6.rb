@@ -13,14 +13,13 @@ see code
 input string  
 output array with string elements
 
-# Algorithm:
-split into array
-map new array with element + length.to_s 
+# Algorithm ref:
+split string into an array of words
+transform new array elements (words) to add space and the length of word
 =end 
-def word_lengths(words)
-  words.split.map do |word|
-    word + ' ' + word.size.to_s
-  end
+
+def word_lengths(string)
+  string.split.map {|word| "#{word} #{word.size}"}
 end
 
 p word_lengths("cow sheep chicken") == ["cow 3", "sheep 5", "chicken 7"]

@@ -34,6 +34,7 @@ def sequence1(pos_integer)
   (1..pos_integer).to_a
  end
 
+ puts
  p sequence1(5) == [1, 2, 3, 4, 5]
  p sequence1(3) == [1, 2, 3]
  p sequence1(1) == [1]

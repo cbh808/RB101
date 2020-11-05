@@ -22,26 +22,46 @@ determine string size / 2
 if size even AND string[0..midpoint-1] == string[midpoint..-1] return string.to_i
 else return string.to_i * 2 
 =end 
-DIGITS_S = %w(0 1 2 3 4 5 6 7 8 9)
+# DIGITS_S = %w(0 1 2 3 4 5 6 7 8 9)
 
-def twice(integer)
-  string_number = get_string_number(integer)
-  midpoint = string_number.size / 2
+# def twice(integer)
+#   string_number = get_string_number(integer)
+#   midpoint = string_number.size / 2
   
-  if string_number.size.even? && 
-    (string_number[0..midpoint-1] == string_number[midpoint..-1])
-    string_number.to_i
-  else
-    string_number.to_i * 2
-  end
-end
+#   if string_number.size.even? && 
+#     (string_number[0..midpoint-1] == string_number[midpoint..-1])
+#     string_number.to_i
+#   else
+#     string_number.to_i * 2
+#   end
+# end
 
-def get_string_number(int)
-  string_number = ''
-  int.to_s.each_char do |char|
-    string_number << char if DIGITS_S.include?(char)
+# def get_string_number(int)
+#   string_number = ''
+#   int.to_s.each_char do |char|
+#     string_number << char if DIGITS_S.include?(char)
+#   end
+#   string_number
+# end
+
+=begin
+# Algorithm ref
+define a method w/ one arg (int)
+return int if number is double number 
+  convert int to string
+  half = string size/2
+  if string size is even number of digits
+    return int if string[0..half-1] == string[half..-1]
+mult by 2 if above does not return value
+(i.e. string not even size or int not double number) 
+=end
+def twice(int)
+  str = int.to_s
+  half = str.size / 2
+  if str.size.even?
+    return int if str[0..half - 1] == str[half..-1]
   end
-  string_number
+  int * 2
 end
 
 p twice(37) == 74
@@ -49,6 +69,7 @@ p twice(44) == 44
 p twice(334433) == 668866
 p twice(444) == 888
 p twice(107) == 214
+puts
 p twice(103103) == 103103
 p twice(3333) == 3333
 p twice(7676) == 7676

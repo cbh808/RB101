@@ -14,13 +14,16 @@ see code
 input array and hash as args
 output
 puts string
-# Algorithm:
-define method
-extract info from args within string interpolation
+
+# Algorithm ref
+define a method w/ 2 args (arr, hsh)
+print string using string interpolation 
+  - for array: join array with spaces as delimiters
+  - for hsh: obtain hash values by referencing them through keys
 =end 
 
-def greetings(array, hash)
-  puts "Hello #{array.join(' ')}! Nice to have a #{hash[:title]} #{hash[:occupation]} around."
+def greetings(name, labels)
+  puts "=> Hello, #{name.join(' ')}! Nice to have a #{labels[:title]} #{labels[:occupation]} around."
 end
 
 greetings(['John', 'Q', 'Doe'], { title: 'Master', occupation: 'Plumber' })
