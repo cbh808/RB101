@@ -17,10 +17,10 @@ create constant with array of chars to be doubled
 create empty string
 iterate over each char of string
 if included in constant, append 2 times to new string
-if not append one time to new string
+if not incl in constant, append one time to new string
 return new string
 =end 
-CONSONANTS = %w( b c d f g h j k l m n p q r s t v w x y z)
+CONSONANTS = %w(b c d f g h j k l m n p q r s t v w x y z)
 
 def double_consonants(string)
   doubled_string = ''
@@ -52,7 +52,26 @@ def double_consonants1(string)
   doubled_array.join
 end
 
+puts
 p double_consonants1('String') == "SSttrrinngg"
 p double_consonants1("Hello-World!") == "HHellllo-WWorrlldd!"
 p double_consonants1("July 4th") == "JJullyy 4tthh"
 p double_consonants1('') == ""
+
+# another regex solution, array instead of string, and tranformation
+def double_consonants2(str)
+  double = str.chars.map do |char| 
+    if char =~ /[^aeiou]/i && char =~ /[a-z]/i
+      char * 2 
+    else
+      char
+    end
+  end
+  double.join
+end
+
+puts
+p double_consonants2('String') == "SSttrrinngg"
+p double_consonants2("Hello-World!") == "HHellllo-WWorrlldd!"
+p double_consonants2("July 4th") == "JJullyy 4tthh"
+p double_consonants2('') == ""

@@ -3,7 +3,15 @@
 # -number of characters in the string that are lowercase letters
 # -number of characters that are uppercase letters
 # -the number of characters that are neither
-# Data Stucture: string, hash with integer values
+# Data Stucture: 
+# input string
+# output hash with integer values
+
+# Alg
+# init local var and assigin count of lowercase letters 
+# init local var and assigincount number of uppercase letters
+# init local var and assigin difference str size - letters
+# return appropriate hash as literal 
 
 def letter_case_count(string)
   a = string.count "a-z"

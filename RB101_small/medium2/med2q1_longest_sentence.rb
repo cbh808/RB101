@@ -39,21 +39,60 @@ puts the last element of the array by joining it together
 puts the array size of last element
 
 =end
+# text = File.read('med2q1_text1.txt')
+# sentences = text.split(/\.|\?|!/)
+# sentence_arr = sentences.map {|sentence| sentence.split(' ')}
+# sorted_arr = sentence_arr.sort {|a, b| a.size <=> b.size}
+
+# puts "Longest sentence: #{sorted_arr[-1].join(' ')}"
+# puts "Words in longest sentence: #{sorted_arr[-1].size}"
+
+# puts
+
+# text = File.read('gutenberg_text.txt')
+# sentences = text.split(/\.|\?|!/)
+# sentence_arr = sentences.map {|sentence| sentence.split(' ')}
+# sorted_arr = sentence_arr.sort {|a, b| a.size <=> b.size}
+
+# puts "Longest sentence: #{sorted_arr[-1].join(' ')}"
+# puts "Words in longest sentence: #{sorted_arr[-1].size}"
+
+
+# without regex:
+=begin
+# Alg
+INIT LOC VAR words_arr = SPLIT TEXT INTO ARRAY OF WORDS
+INIT LOC VAR start_idx = 0
+INIT LOC VAR longest = 0
+INT LOC VAR longest_sentence = []
+ITERATE OVER INDEXES OF WORDS_ARR
+START AT INDEX 0
+INIT current_wrd = words_arr[idx]
+  IF WORD AT CURRENT IDX DOES NOT HAVE A  ., ? or !, => NEXT
+  ELSE 
+  COMPARE LENGTH OF CURRENT SENTENCE TO LEN LONGEST SENTENCE
+    IF CURRENT IS LONGER, REASSIGN longest_sentence TO ARRAY SLICE FROM         START INDEX TO CURENT INDEX 
+UPDATE START_IDX, REASSIGN START_IND to IDX + 1
+=end
 
 text = File.read('med2q1_text1.txt')
-sentences = text.split(/\.|\?|!/)
-sentence_arr = sentences.map {|sentence| sentence.split(' ')}
-sorted_arr = sentence_arr.sort {|a, b| a.size <=> b.size}
+words_arr = text.split(' ')
+start_idx = 0
+longest = 0
+longest_sentence = []
 
-puts "Longest sentence: #{sorted_arr[-1].join(' ')}"
-puts "Words in longest sentence: #{sorted_arr[-1].size}"
+words_arr.each_index do |idx|
+  current_word = words_arr[idx]
+  if ! current_word.include?('!') && ! current_word.include?('?') && ! current_word.include?('.')
+    next
+  else
+    if words_arr[start_idx..idx].size > longest
+      longest_sentence = words_arr[start_idx..idx]
+    end
+    longest = words_arr[start_idx..idx].size
+    start_idx = idx + 1
+  end
+end
 
-puts
-
-text = File.read('gutenberg_text.txt')
-sentences = text.split(/\.|\?|!/)
-sentence_arr = sentences.map {|sentence| sentence.split(' ')}
-sorted_arr = sentence_arr.sort {|a, b| a.size <=> b.size}
-
-puts "Longest sentence: #{sorted_arr[-1].join(' ')}"
-puts "Words in longest sentence: #{sorted_arr[-1].size}"
+p longest_sentence.join(' ')
+p longest

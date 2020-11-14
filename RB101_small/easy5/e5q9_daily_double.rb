@@ -1,12 +1,12 @@
 =begin
 # Problem
 # inputs
- method that takes a string argument
-# outputs  
-returns new string that contains value of original string with all 
+string argument
+# outputs
+new string that contains value of original string with all
 consecutive duplicate characters collapsed into a single character
 # rules
-do not use String#squeeze or String#squeeze!.    
+do not use String#squeeze or String#squeeze! methods
 
 # Example / Test Case
 crunch('ddaaiillyy ddoouubbllee') == 'daily double'
@@ -15,30 +15,27 @@ crunch('ggggggggggggggg') == 'g'
 crunch('a') == 'a'
 crunch('') == ''
 
-# Data Structure 
-strings as inputs
-strings as outputs
+# Data Structure
+input: string
+output: string
 
-# Algorithm
-compare each string char to previous char, passing to new string
-if same, dont include in new string
-handle cases if empty string or string with one char
-=end 
+# Algorithm refactor
+define method w/ one arg (string)
+create a new empty string
+iterate over each char of string
+if it is not equal to last character of new string, then add it
+return new string
+=end
 
 def crunch(string)
   new_string = ''
-  if string.size >= 1
-    new_string << string[0]
-    i = 1
-    until i == string.size
-      new_string << string[i] if string[i] != string[i-1]
-      i += 1
-    end
+  string.each_char do |char|
+    new_string << char unless char == new_string[-1]
   end
   new_string
 end
 
-p crunch('ddaaiillyy ddoouubbllee') == 'daily double'
+p crunch('ddaaiillyy ddoouubbllee') #== 'daily double'
 p crunch('4444abcabccba') == '4abcabcba'
 p crunch('ggggggggggggggg') == 'g'
 p crunch('a') == 'a'

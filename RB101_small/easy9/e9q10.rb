@@ -28,3 +28,17 @@ end
 
 p buy_fruit([["apples", 3], ["orange", 1], ["bananas", 2]]) ==
   ["apples", "apples", "apples", "orange", "bananas","bananas"]
+
+  # can also do:
+  def buy_fruit1(nested)
+    list = []
+    nested.each do |fruit, num|
+      num.times do
+      list << fruit
+      end
+    end
+  list
+  end
+  
+  p buy_fruit1([["apples", 3], ["orange", 1], ["bananas", 2]]) ==
+    ["apples", "apples", "apples", "orange", "bananas","bananas"]

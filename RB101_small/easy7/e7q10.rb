@@ -16,6 +16,7 @@ output string
 split string into array
 return array index -2
 =end 
+
 def penultimate(string)
  string.split[-2]
 end

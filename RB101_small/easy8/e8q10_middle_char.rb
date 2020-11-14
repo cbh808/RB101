@@ -35,3 +35,28 @@ p center_of('Launch School') == ' '
 p center_of('Launch') == 'un'
 p center_of('Launchschool') == 'hs'
 p center_of('x') == 'x'
+
+=begin
+# Algorithm ref
+define a method w/ one arg (str)
+  init loc var size and assing str size
+  if odd length return middle char (size/2)
+  else take slice from size/2 - 1 with length of 2
+return 
+=end
+
+def center_of1(str)
+  size = str.size
+  if size.odd?
+    str[size/2]
+  else
+    str[size/2-1, 2]
+  end
+end
+
+puts
+p center_of1('I love ruby') == 'e'
+p center_of1('Launch School') == ' '
+p center_of1('Launch') == 'un'
+p center_of1('Launchschool') == 'hs'
+p center_of1('x') == 'x'

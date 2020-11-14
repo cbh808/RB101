@@ -14,24 +14,33 @@ input
 output
 
 # Algorithm:
-loop over input integer 'number of digits times - 1'
-i=0
-call rotate_rightmost_digits(number, number of digits - i)
-=end 
-def max_rotation(number)
-  i = 0
-  digits = number.to_s.size
-  while i < digits - 1 
-    number = rotate_rightmost_digits(number, digits - i)
-    i += 1
-  end
-  number
+define method with args (integer)
+init loc var couter and assign size of string created from integer
+loop from 0 up to size of array -1 (not necessary to rotate number of size 1)
+  pass in integer and (size - counter) value to rotate_rightmost_digits method
+  reassign result to integer
+  break if i >= size
+Join final array and convert to int
+=end
+
+def rotate_array(array)
+  array[1..-1] + [array[0]]
 end
 
 def rotate_rightmost_digits(integer, n)
   char_array = integer.to_s.chars
-  char_array = char_array[0..-n-1] + char_array[-n..-1].rotate
+  char_array[-n..-1] = rotate_array(char_array[-n..-1])
   char_array.join.to_i
+end
+
+def max_rotation(number)
+  i = 0
+  digits = number.to_s.size
+  while i < digits - 1
+    number = rotate_rightmost_digits(number, digits - i)
+    i += 1
+  end
+  number
 end
 
 p max_rotation(735291) == 321579

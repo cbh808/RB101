@@ -15,10 +15,13 @@ integer sizes
 output hash of integer keys and integer values 
 
 # Algorithm
--split input string into array of individual words
--map array to array of string lengths, calling uniq determines the keys
--Iterate over string length array, count the number of each instance of 
-key value 6 add key and value to hash
+- define method w one arg (string)
+- define local var and assing empty hash
+- split input string into array of individual words
+- transform array to array of string lengths
+- determine uniqe values to determine the keys
+- Iterate over string length array, count the number of each instance of 
+  key value & assign to corresponding key of hash
 =end 
 
 def word_sizes(string)
@@ -32,18 +35,41 @@ def word_sizes(string)
   end
   word_size_hash
 end
- 
 
-word_sizes('Four score and seven.') == { 3 => 1, 4 => 1, 5 => 1, 6 => 1 }
-word_sizes('Hey diddle diddle, the cat and the fiddle!') == { 3 => 5, 6 => 1, 7 => 2 }
-word_sizes("What's up doc?") == { 6 => 1, 2 => 1, 4 => 1 }
-word_sizes('') == {}
+p word_sizes('Four score and seven.') == { 3 => 1, 4 => 1, 5 => 1, 6 => 1 }
+p word_sizes('Hey diddle diddle, the cat and the fiddle!') == { 3 => 5, 6 => 1, 7 => 2 }
+p word_sizes("What's up doc?") == { 6 => 1, 2 => 1, 4 => 1 }
+p word_sizes('') == {}
 
 # alternative initiating hash with default value 0 and counting instances directly:
-def word_sizes(words_string)
+def word_sizes1(words_string)
   counts = Hash.new(0)
   words_string.split.each do |word|
     counts[word.size] += 1
   end
   counts
-end 
+end
+
+puts
+p word_sizes1('Four score and seven.') == { 3 => 1, 4 => 1, 5 => 1, 6 => 1 }
+p word_sizes1('Hey diddle diddle, the cat and the fiddle!') == { 3 => 5, 6 => 1, 7 => 2 }
+p word_sizes1("What's up doc?") == { 6 => 1, 2 => 1, 4 => 1 }
+p word_sizes1('') == {}
+
+# another approach, less direct
+def word_sizes2(string)
+  words = string.split(' ')
+  hash = {}
+
+  sizes = words.map {|word| word.length} # get array of sizes
+  sizes.each {|num| hash[num] = 0} # define keys & set values to 0
+  sizes.each {|num| hash[num] +=1} # update values
+  
+  hash
+end
+
+puts
+p word_sizes2('Four score and seven.') == { 3 => 1, 4 => 1, 5 => 1, 6 => 1 }
+p word_sizes2('Hey diddle diddle, the cat and the fiddle!') == { 3 => 5, 6 => 1, 7 => 2 }
+p word_sizes2("What's up doc?") == { 6 => 1, 2 => 1, 4 => 1 }
+p word_sizes2('') == {}

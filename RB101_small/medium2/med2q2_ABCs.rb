@@ -66,13 +66,11 @@ end
 
 def block_word?(word)
   blocks = reset_hash()
-
   word.each_char do |char|
     key = blocks.keys.select do |el|
       el.include?(char.upcase)
     end
-
-  blocks[key[0]] += 1
+  blocks[key.join] += 1 # key array to str with .join to get value
   end
 
   blocks.values.all? {|v| v < 2}
@@ -83,12 +81,42 @@ p block_word?('BUTCH') == false
 p block_word?('jest') == true
 
 =begin
-# Algorithm II General (LS):
-Store spelling blocks in a data structure (array)
-
-Iterate over characters of each block
-Count the number of times the letters in each block occur in string
-
-return true if all blocks have been used < 2 times
-else retun false
+Alg. ref. 
+STORE BLOCKS IN ARRAY
+Failure Modes: 
+IF any combination of letters of any block is used > 1 time, => false
+otherwise true
+DEF METHOD W/ ONE ARG 
+ITERATE OVER ALL BLOCKS STORED IN ARRAY 
+  CHECK COUNT OF FIRST LETTER
+  CHECK COUNT OF SECOND LETTER
+  ADD COUNTS TOGETHER
+  number = string.count(array[0]) + string.count(array[1])
+  IF number > 1, RETURN false
+RETURN TRUE
 =end
+
+BLOCKS = [['B', 'O'], ['X', 'K'], ['D', 'Q'], ['C', 'P'],
+            ['N', 'A'],['G', 'T'], ['R', 'E'],['F', 'S'],
+            ['J', 'W'], ['H', 'U'], ['V', 'I'], ['L', 'Y'], ['Z', 'M']]
+
+# def block_word?(str)
+#   BLOCKS.each do |arr|
+#     number = str.upcase.count(arr[0]) + str.upcase.count(arr[1])
+#     return false if number > 1
+#   end
+#   true
+# end
+
+def block_word1?(str)
+  BLOCKS.each do |a, b|
+    number = str.upcase.count(a) + str.upcase.count(b)
+    return false if number > 1
+  end
+  true
+end
+
+puts
+p block_word1?('BATCH') == true
+p block_word1?('BUTCH') == false
+p block_word1?('jest') == true

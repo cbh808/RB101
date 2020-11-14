@@ -12,29 +12,53 @@ see code
 string input
 array to manipulate elements
 string output
-# Algorithm
-string split into array of chars
-iterate over chars change.lowcase to upcase and vice versa, leave other chars alone
-join back into string
-=end 
+
+# Alg
 LOWERCASE = ('a'..'z').to_a
 UPPERCASE = ('A'..'Z').to_a
 
-def swapcase(string)
-  char_array = string.chars
-  char_array.map! do |char| 
-    if LOWERCASE.include?(char) 
-      char.upcase 
+def method with one arg (str)
+init local var and assign empty str
+iterate over string chars
+if char LOWERCASE, make UPPERCASE, append to local var
+if char UPPERCASE, make LOWERCASE, append to local var
+else append char local var as is
+
+def swapcase(str)
+  LOWERCASE = ('a'..'z').to_a
+  UPPERCASE = ('A'..'Z').to_a
+  new_string = ' '
+  str.each_char do |char|
+    if LOWERCASE.include?(char)
+      new_string << char.upcase
     elsif UPPERCASE.include?(char)
-      char.downcase
+      new_string << char.downcase
     else
-      char
+      new_string << char
     end
   end
-  char_array.join
+  new_string
+end
+=end
+
+LOWERCASE = ('a'..'z').to_a
+UPPERCASE = ('A'..'Z').to_a
+
+def swapcase(str)
+  new_string = ''
+  str.each_char do |char|
+    if LOWERCASE.include?(char)
+      new_string << char.upcase
+    elsif UPPERCASE.include?(char)
+      new_string << char.downcase
+    else
+      new_string << char
+    end
+  end
+  new_string
 end
 
-p swapcase('CamelCase') #== 'cAMELcASE'
-p swapcase('Tonight on XYZ-TV') #== 'tONIGHT ON xyz-tv'
+p swapcase('CamelCase') == 'cAMELcASE'
+p swapcase('Tonight on XYZ-TV') == 'tONIGHT ON xyz-tv'
 
 # alt w regex, e.g. if char =~ /[a-z]/

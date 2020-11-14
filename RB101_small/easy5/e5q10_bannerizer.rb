@@ -1,11 +1,11 @@
 =begin
 # Problem
 # inputs  
-short line of text
+string of 0 or more chars
 # outputs  
-print it within a box
+print it to screen within a box
 # rules
-assume input will fit in terminal window.  
+assume input will fit in terminal window,
 # Example / Test Case
 print_in_box('')
 +--+
@@ -19,14 +19,20 @@ print_in_box('To boldly go where no one has gone before.')
 | To boldly go where no one has gone before. |
 |                                            |
 +--------------------------------------------+
-# Data Structure 
-string input of text
-strings of symbols forming box 
-# Algorithm
-define method taking string as input
-define variable for each line of box for the case of empty string
-update middle of each variable based on string length
-output variables to terminal
+# Data Structure
+input: string
+output: strings (of symbols forming box and text within)
+
+Algorithm:
+define method with 1 arg (str)
+initialize local var 'top_bottom'
+  outputs box type plus + hyphen + string length spaces + hyphen + plus
+    number of chars more of '-' 
+initialize local var 'inner'
+  outputs bar + space + string length more spaces + space + bar
+initialize local var 'middle' 
+  outputs bar + space + string + space + bar
+puts above local variables in correct order.
 =end 
 
 def print_in_box(featured_text)

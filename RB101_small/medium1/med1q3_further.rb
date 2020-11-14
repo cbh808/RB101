@@ -25,16 +25,15 @@ def max_rotation(number)
   
   i = 0
   while i < size - 1 
-    arr.push(arr.delete(arr[i]))
+    arr.push(arr.delete(arr[i])) #mutates and iterates but size stays same
     i += 1
   end
   arr.join('')
 end
 
 
-
 p max_rotation(735291) == '321579'
 p max_rotation(3) == '3'
 p max_rotation(35) == '53'
-p max_rotation(105) == '015' #string therefore leading zero retained
+p max_rotation(105) == '015' #left as string so that leading zero retained
 p max_rotation(8_703_529_146) == '7321609845'  #no underscores when rejoining

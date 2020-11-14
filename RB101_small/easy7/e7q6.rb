@@ -1,4 +1,6 @@
-# ignore non-alphabetic chars when determining whether each letter is uppercase or lowercase 
+# same problem as e7q5.rb except:
+# ignore non-alphabetic chars when determining whether
+# each letter is uppercase or lowercase
 def staggered_case(string)
   new_string = ''
   i = 0
