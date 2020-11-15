@@ -48,3 +48,42 @@ p letter_percentages('123') == { lowercase: 0, uppercase: 0, neither: 100 }
 
 p letter_percentages('AbCd + f') == { lowercase: 37.5, uppercase: 25, neither: 37.5 }
 p letter_percentages('abcdefGHI') == {:lowercase=>66.67, :uppercase=>33.33, :neither=>0.0}
+
+=begin
+implicit: percentages can be floats => no integer division
+input: string
+output: hash
+
+Alg. ref. 
+define method w. one arg, string
+INITIALIZE HASH WITH following KEY/VALUE PAIRS
+lowercase: 0
+uppercase: 0
+neither: 0
+NOTE: neither = 100 - (uppercase + lowercase)
+COUNT lowercase letters and divide by size of str
+  REASSIGN VALUE OF RESULT TO HASH[:lowercase]
+REPEAT FOR UPPERCASE
+REASSIGN VALUE OF KEY :neither 
+RETURN HASH
+=end
+
+def letter_percentages1(str)
+  hash = { lowercase: 0, uppercase: 0, neither: 0 }
+  size = str.size
+  
+  lowercase_percentage = ((str.count('a-z') / size.to_f) * 100)
+  uppercase_percentage = (str.count('A-Z') / size.to_f) * 100
+  neither_percentage = 100 - (uppercase_percentage + lowercase_percentage)
+  
+  hash[:lowercase] = lowercase_percentage
+  hash[:uppercase] = uppercase_percentage
+  hash[:neither] =  neither_percentage
+  
+  hash
+end
+
+puts
+p letter_percentages1('abCdef 123') == { lowercase: 50, uppercase: 10, neither: 40 }
+p letter_percentages1('AbCd +Ef') == { lowercase: 37.5, uppercase: 37.5, neither: 25 }
+p letter_percentages1('123') == { lowercase: 0, uppercase: 0, neither: 100 }

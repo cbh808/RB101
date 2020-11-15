@@ -1,6 +1,6 @@
 =begin
-triangles types defined in problem:
-  
+triangles types defined:
+
   right:        One angle of the triangle is a right angle (90 degrees)
   acute:        All 3 angles of the triangle are less than 90 degrees
   obtuse:       One angle is greater than 90 degrees.
@@ -10,7 +10,7 @@ triangles types defined in problem:
 # inputs:
 3 arguments, angles of triangle
 # outputs:
-triangle type as defined above
+symbol, triangle type as defined above 
 
 # rules:
 to be valid, sum of angles == 180 degrees
@@ -23,22 +23,19 @@ see code
 input: 3 integers as args to method
 output: symbol representing triangle type
 
-# Algorithm General:
+# Algorithm:
 define method with 3 arguments
 check validity
   sum of angles == 180
   all angles > 0
 if valid:
   check if right
-    one sides == 90
+    one side == 90
   check if acute
     all sides < 90
   else
-    declare obtuse
+    return :obtuse
 =end 
-
-#C: 
-
 
 def triangle(angle1, angle2, angle3)
   angles = [angle1, angle2, angle3]

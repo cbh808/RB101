@@ -1,8 +1,4 @@
 =begin
-# inputs:
-
-# outputs:
-
 # rules:
 if first parenthesis is `)`, == false
 all balanced pairs must each start with a `(``, but not `)`
@@ -56,7 +52,7 @@ end
 p balanced?('What{} (is) this?') == true
 p balanced?('What is] this?') == false
 p balanced?('What {is this?') == false
-p balanced?('((What) (is this))?') #== true
+p balanced?('((What) (is this))?') == true
 p balanced?('((What)) (is this)"?') == false
 p balanced?("Hey!'") == false
 p balanced?(')Hey!(') == false
