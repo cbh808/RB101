@@ -58,3 +58,19 @@ p triangle(30, 90, 60) == :right
 p triangle(120, 50, 10) == :obtuse
 p triangle(0, 90, 90) == :invalid
 p triangle(50, 50, 50) == :invalid
+
+#alt yet similar
+def triangle1(a, b, c)
+  arr = [a, b, c]
+  return :invalid if a + b + c != 180 || [a, b, c].min <= 0
+  return :right if arr.include?(90)
+  return :acute if arr.all? {|el| el < 90}
+  return :obtuse if arr.any? {|el| el > 90}
+end
+
+puts
+p triangle1(60, 70, 50) == :acute
+p triangle1(30, 90, 60) == :right
+p triangle1(120, 50, 10) == :obtuse
+p triangle1(0, 90, 90) == :invalid
+p triangle1(50, 50, 50) == :invalid

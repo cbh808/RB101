@@ -19,47 +19,32 @@ def method w/ one arg
   swap = 1
   until swap == 0 do
     swap = 0
-    (0..array.size - 2).each do |idx|
+    (0..array.size-2).each do |idx|
+      # compare 1st el. @ idx 0 w/ 2nd el. @ idx1
+      # if idx 0 <=> idx 1 == 1 (larger)
       if array[idx] <=> array[idx+1] == 1
-        a = array[idx]
-        array[idx] = array[idx + 1]
-        array[idx+1] = a
-        swap = 1
+        swap the values
+        reassign swap = 1
       end
     end
-  use bubble sort to sort array
-  sort idx 0/1 => compare 1st element (idx 0) with 2nd element (idx 1)
-    if idx 0 <=> idx 1 == 1 (larger), reassign swap = 1
-  repeat until idx -2/-1 => compare next to last element (idx -2) w last (idx -1)
 
 end
-
-Bubble sort pseudo:
-
-
-  
-
-
-=end 
+=end
 
 def bubble_sort!(array)
   swap = 1
+
   until swap == 0 #repeats below iteration until no swaps carried out
     swap = 0
-    
     (0..(array.size - 2)).each do |idx| 
       if (array[idx] <=> array[idx+1]) == 1
+        array[idx], array[idx + 1] = array[idx + 1], array[idx]
         swap = 1
-        a = array[idx]
-        array[idx] = array[idx + 1]
-        array[idx+1] = a
       end
     end
-    
   end
-end
 
-# alt: could use Ruby idiom => a, b = b, a for the element swapping
+end
 
 array = [5, 3]
 bubble_sort!(array)
