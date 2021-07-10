@@ -1,1 +1,0 @@
-1.upto(99) {|int| puts int if int.even?}
